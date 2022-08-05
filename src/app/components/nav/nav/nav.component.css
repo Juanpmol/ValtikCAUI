@@ -20,10 +20,10 @@ li {
   justify-content: space-between;
   padding: 20px;
   background-color: #000622;
-  color: #fff;
+  color: #F9F5EB;
 }
 .nav-links a {
-  color: #fff;
+  color: #F9F5EB;
 }
  /* logo */
 .logo {
@@ -32,11 +32,11 @@ li {
  /* navbar menu */
 .menu {
   display: flex;
-  gap: 1em;
+  gap: 1rem;
   font-size: 18px;
 }
 .menu li:hover {
-  background-color: #4c9e9e;
+  background-color: #607EAA;
   border-radius: 5px;
   transition: 0.3s ease;
 }
@@ -45,7 +45,7 @@ li {
 }
 
 .dropdown {
-  background-color: rgb(1, 139, 139);
+  background-color: #607EAA;
   padding: 1em 0;
   position: absolute;
   display: none;
@@ -61,13 +61,10 @@ li {
   text-align: center;
 }
 .dropdown li:hover {
-  background-color: #4c9e9e;
+  background-color: #607EAA;
 }
 
-.carrito{
-  background-color: #4c9e9e;
-  border-radius: 5px;
-}
+
 
 /*responsive*/
 
@@ -85,7 +82,7 @@ input[type=checkbox]{
 .menu {
   display:none;
   position: absolute;
-  background-color:#000622;
+  background-color:#1C3879;
   right: 0;
   left: 0;
   text-align: center;
@@ -93,7 +90,7 @@ input[type=checkbox]{
 }
 .menu li:hover {
   display: inline-block;
-  background-color:#4c9e9e;
+  background-color:#607EAA;
   transition: 0.3s ease;
 }
 .menu li + li {
@@ -111,7 +108,7 @@ input[type=checkbox]:checked ~ .menu{
   transform: translateX(35%);
 }
 .dropdown li:hover {
-  background-color: #4c9e9e;
+  background-color: #607EAA;
 }
 }
 
