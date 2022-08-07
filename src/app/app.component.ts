@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ValtikCAUI';
+  nombreUsuario: string ="";
+  @Output()
+  private _getNombreUsuario = new EventEmitter<string>;
+  public get getNombreUsuario() {
+    return this._getNombreUsuario;
+  }
+  public set getNombreUsuario(value) {
+    this._getNombreUsuario = value;
+  }
+
+
 }

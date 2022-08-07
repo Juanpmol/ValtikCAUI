@@ -9,6 +9,9 @@ import { BuscarComponent } from './components/buscar/buscar/buscar.component';
 import { RegistroComponent } from './components/registro/registro/registro.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './home/home/home.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,14 @@ import { FooterComponent } from './components/footer/footer.component';
     BuscarComponent,
     RegistroComponent,
     CarruselComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    InicioSesionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
