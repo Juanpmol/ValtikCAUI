@@ -10,5 +10,5 @@ export interface InicioSesion {
   telefono: string;
   ciudad:string;
   provincia: string;
-  esEmpleado:boolean;
+  esEmpleado:number;
 }
