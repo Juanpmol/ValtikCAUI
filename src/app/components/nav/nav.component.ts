@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
+import { InicioSesionService } from 'src/app/services/inicio-sesion.service';
+import {CarritoComprasService} from 'src/app/services/carrito-compras.service';
+// import { InicioSesionComponent } from 'src/app/inicio-sesion/inicio-sesion.component';
 
 
 @Component({
@@ -11,15 +14,27 @@ export class NavComponent implements OnInit {
 
   ingresoUsuario: boolean = false;
   esAdmin: boolean = false;
+  nombreUser!: string;
+  counter:number=0;
 
-  constructor() { }
+  constructor(public inicio:InicioSesionService,
+    public carritoCompra: CarritoComprasService) {
+    this.ingresoUsuario = Boolean(inicio.estaLogeado);
+    this.nombreUser = inicio.getNombre();
+   }
+
+  // constructor() { }
 
   ngOnInit(): void {
+    this.carritoCompra.myCart$.subscribe(producto => {
+      this.counter = producto.length;
+    })
   }
 
   nombreUsuario(): string {
-    let nombreUsuario:string= "Usuario Prueba";
-    this.ingresoUsuario=!this.ingresoUsuario;
-    return nombreUsuario;
+    this.nombreUser = this.inicio.getNombre();
+    console.log(this.nombreUser);
+    console.log(this.ingresoUsuario);
+    return this.nombreUser;
   }
 }

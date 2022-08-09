@@ -1,0 +1,13 @@
+.container{
+  display: flex;
+}
+.card{
+  float: left;
+}
+.card{
+  float: right;
+}
+.card{
+  margin:0 auto;
+  display:inline-block
+}

@@ -1,0 +1,14 @@
+<div class="container">
+  <div *ngFor="let producto of producto" class="card" style="width: 18rem;">
+    <img src="{{producto.image}}" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{producto.name}}</h5>
+      <p class="card-text">{{producto.price | currency:'US'}}</p>
+    </div>
+    <div class="card-body">
+      <button (click)="onAddToShoppingCart(producto)">Añadir al carrito</button>
+    </div>
+  </div>
+
+</div>
+

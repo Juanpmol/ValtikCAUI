@@ -1,5 +1,5 @@
 import { InicioSesionService } from '../services/inicio-sesion.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { TokenModel } from '../models/token.model';
 import { InicioSesion } from '../models/iniciosesion.model';
 import { Router } from '@angular/router';
@@ -14,39 +14,35 @@ export class InicioSesionComponent implements OnInit {
   usuario!: string;
   contrasena!: string;
   private cadena!: string;
+  esUsuario:boolean = false;
+  private usuarioRegistrado!:string;
 
-  //Tocó así :(
-    token: TokenModel = {
-      UserName:'admin',
-      PasswordAuth: '12345'
-    }
 
-  tokenResponse!:string;
-
-  constructor(private inicio:InicioSesionService) {
-    inicio.iniciarAPI(this.token).subscribe(data=>{
-      this.tokenResponse=data.token;
-      // console.log(this.tokenResponse);
-    });
-}
+  constructor(private inicio:InicioSesionService,
+    private ruta:Router) {}
 
 
   ngOnInit(): void {}
 
   inicioSesion(user:string, pass:string): any{
-    let sesion:any = this.inicio.loginUsuario(parseInt(user)).subscribe((data: any) =>{
+    let respuesta = this.inicio.loginUsuario(parseInt(user)).subscribe(data=>{
       console.log(data);
+      if (data.password1 == pass)
+      {
+        this.esUsuario=true;
+        this.usuarioRegistrado=(data.nombre1 +" "+ data.apellido1);
+        alert(`Bienvenido: ${this.usuarioRegistrado}`);
+        this.ruta.navigate(['']);
+      }
+      else{
+        alert('Password Incorrecto');
+      }
     });
+    return respuesta;
+  }
 
-    // if(sesion.idCliente==user && sesion.password == pass)
-    // {
-    //   localStorage.setItem("usuario",(sesion.nombre1+" "+sesion.apellido1));
-    //   this.ruta.navigate(['']);
-    // }
-    this.cadena = user+pass;
-
-    console.log(this.cadena);
-    return this.cadena;
+  getUsuarioRegistrado():string{
+    return this.usuarioRegistrado;
   }
 
 }

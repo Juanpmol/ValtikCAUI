@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,16 @@ export class AppComponent {
   public set getNombreUsuario(value) {
     this._getNombreUsuario = value;
   }
+
+  products: Product [] = [
+    {
+      id: "",
+      name: "",
+      price: 0,
+      image: ""
+    },
+
+  ]
 
 
 }

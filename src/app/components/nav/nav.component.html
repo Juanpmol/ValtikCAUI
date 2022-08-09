@@ -21,25 +21,32 @@
             Catálogo
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Camisas</a></li>
-            <li><a class="dropdown-item" href="#">Pantalones</a></li>
-            <li><a class="dropdown-item" href="#">Zapatos</a></li>
-            <li><a class="dropdown-item" href="#">Accesorios</a></li>
+            <li><a class="dropdown-item" href="#"
+              [routerLink]="['catalogo/camisas']" [routerLinkActive]="'active'">Camisas</a></li>
+            <li><a class="dropdown-item" href="#"
+              [routerLink]="['catalogo/pantalones']" [routerLinkActive]="'active'">Pantalones</a></li>
+            <li><a class="dropdown-item" href="#"
+              [routerLink]="['catalogo/zapatos']" [routerLinkActive]="'active'">Zapatos</a></li>
+
           </ul>
         </li>
         <li class="nav-item">
-          <div *ngIf = "!ingresoUsuario; else verUsuario">
+          <div *ngIf = "nombreUsuario()=='' ; else verUsuario">
             <a class="nav-link" aria-current="page"
             [routerLink]="['inicio-sesion']" [routerLinkActive]="'active'"
-          >Inicio de sesión</a>
+          >Inicio de sesión {{this.inicio.getNombre()}} {{nombreUsuario()}}</a>
           </div>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Registrase</a>
+          <a class="nav-link" aria-current="page" href="#"
+          [routerLink]="['registro']" [routerLinkActive]="'active'">Registrarse</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"><i class="bi bi-cart2"></i></a>
+          <a class="nav-link" aria-current="page" href="#"
+          [routerLink]="['carrito-compras']" [routerLinkActive]="'active'"><i class="bi bi-cart2"></i>
+            <span>{{counter}}</span>
+          </a>
         </li>
       </ul>
       <form class="d-flex">
@@ -53,8 +60,10 @@
 </nav>
 
 <ng-template #verUsuario>
+
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+    role="button" data-bs-toggle="dropdown" aria-expanded="false">
       {{nombreUsuario()}}
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
