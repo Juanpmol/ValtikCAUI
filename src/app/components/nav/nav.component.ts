@@ -14,16 +14,16 @@ export class NavComponent implements OnInit {
 
   ingresoUsuario: boolean = false;
   esAdmin: boolean = false;
-  nombreUser!: string;
+  nombreUser: string = "";
   counter:number=0;
 
   constructor(public inicio:InicioSesionService,
     public carritoCompra: CarritoComprasService) {
     this.ingresoUsuario = Boolean(inicio.estaLogeado);
-    this.nombreUser = inicio.getNombre();
+    this.inicio.getUserName.subscribe(x=> {
+      this.nombreUser = x;
+    });
    }
-
-  // constructor() { }
 
   ngOnInit(): void {
     this.carritoCompra.myCart$.subscribe(producto => {
@@ -31,10 +31,7 @@ export class NavComponent implements OnInit {
     })
   }
 
-  nombreUsuario(): string {
-    this.nombreUser = this.inicio.getNombre();
-    console.log(this.nombreUser);
-    console.log(this.ingresoUsuario);
-    return this.nombreUser;
+  cerrarsesion():void{
+
   }
 }

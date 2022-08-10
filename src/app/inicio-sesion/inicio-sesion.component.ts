@@ -31,10 +31,11 @@ export class InicioSesionComponent implements OnInit {
       {
         this.esUsuario=true;
         this.usuarioRegistrado=(data.nombre1 +" "+ data.apellido1);
+        this.inicio.setUserName(this.usuarioRegistrado);
         alert(`Bienvenido: ${this.usuarioRegistrado}`);
         this.ruta.navigate(['']);
       }
-      else{
+      else if (data.password1 != pass){
         alert('Password Incorrecto');
       }
     });

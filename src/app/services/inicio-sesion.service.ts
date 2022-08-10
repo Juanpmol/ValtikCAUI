@@ -9,33 +9,26 @@ import { InicioSesion } from '../models/iniciosesion.model';
   providedIn: 'root'
 })
 export class InicioSesionService {
-  private loggedIn;
-  private username;
-  public nombre:Observable<string> ;
+  private loggedIn = new BehaviorSubject<boolean>(false);
+  private username = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient) {
-    this.loggedIn = new BehaviorSubject<boolean>(false);
-    this.username = new BehaviorSubject<string>('');
-    this.nombre = this.username.asObservable();
   }
 
   loginUsuario(user:number): Observable<InicioSesion>{
 
     let response: any = this.http.get<InicioSesion>(
       `https://localhost:7194/api/Cliente/${user}`);
-    localStorage.setItem("user", (response.nombre1 + " "+ response.apellido1));
-    this.setNombre((response.nombre1 + " "+ response.apellido1));
-    this.loggedIn.next(true);
+
     return response;
   }
 
-  public setNombre(data:string):void{
-
-    this.username.next(data);
+  get getUserName(){
+    return this.username.asObservable();
   }
 
-  public getNombre():string{
-   return this.username.getValue();
+  public setUserName(data:string):void{
+    this.username.next(data);
   }
 
   get estaLogeado():Observable<boolean>{
@@ -43,7 +36,7 @@ export class InicioSesionService {
   }
 
   cerrarsesion():void{
-    this.setNombre('');
+    this.setUserName('');
     this.loggedIn.next(false);
   }
 

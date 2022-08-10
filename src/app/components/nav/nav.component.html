@@ -31,10 +31,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <div *ngIf = "nombreUsuario()=='' ; else verUsuario">
+          <div *ngIf = "nombreUser == ''; else verUsuario">
             <a class="nav-link" aria-current="page"
             [routerLink]="['inicio-sesion']" [routerLinkActive]="'active'"
-          >Inicio de sesión {{this.inicio.getNombre()}} {{nombreUsuario()}}</a>
+          >Inicio de sesión {{nombreUser}}</a>
           </div>
 
         </li>
@@ -51,9 +51,7 @@
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-dark" style="background-color: #607EAA;" type="submit"
-        (click)="nombreUsuario()"
-        >Search</button>
+        <button class="btn btn-dark" style="background-color: #607EAA;" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -64,7 +62,7 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      {{nombreUsuario()}}
+      {{nombreUser}}
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
       <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
