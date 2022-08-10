@@ -11,6 +11,7 @@ export class CarritoComprasService {
 
 
   private myCart = new BehaviorSubject<Product[]>([]);
+  public cantidadProductos = new BehaviorSubject<number>(0);
 
   myCart$ = this.myCart.asObservable();
 
@@ -30,6 +31,14 @@ export class CarritoComprasService {
    onAddToShoppingCart(producto: Product) {
     this.myShoppingCart.push(producto);
     this.total = this.myShoppingCart.reduce((sum, item) => sum + item.price, 0);
+    this.incrementaCantidadProductos();
+ }
+ get getCantidadProductos(){
+  return this.cantidadProductos.asObservable();
+ }
+
+ incrementaCantidadProductos(){
+  this.cantidadProductos.next(this.cantidadProductos.value+1);
  }
 
 }

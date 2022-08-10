@@ -26,7 +26,6 @@ export class InicioSesionComponent implements OnInit {
 
   inicioSesion(user:string, pass:string): any{
     let respuesta = this.inicio.loginUsuario(parseInt(user)).subscribe(data=>{
-      console.log(data);
       if (data.password1 == pass)
       {
         this.esUsuario=true;

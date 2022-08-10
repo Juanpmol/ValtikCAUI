@@ -23,15 +23,17 @@ export class NavComponent implements OnInit {
     this.inicio.getUserName.subscribe(x=> {
       this.nombreUser = x;
     });
+    this.carritoCompra.getCantidadProductos.subscribe(items =>{
+      this.counter = items;
+    });
    }
 
   ngOnInit(): void {
-    this.carritoCompra.myCart$.subscribe(producto => {
-      this.counter = producto.length;
-    })
+
   }
 
   cerrarsesion():void{
-
+    this.inicio.setUserName('');
   }
+
 }
